@@ -1,12 +1,17 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+import { PinoLogger } from 'nestjs-pino';
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+@Controller('ticker')
+export class AppController {
+  constructor(
+    private readonly logger: PinoLogger,
+    private readonly appService: AppService) {}
+
+  @Get(':ticker')
+  async getCap(@Param('ticker') ticker: string): Promise<{}> {
+    this.logger.debug('loading cap for ticker', ticker);
+    return await this.appService.getCap(ticker);
   }
 }
