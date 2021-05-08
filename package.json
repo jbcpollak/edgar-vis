@@ -34,7 +34,7 @@
     "rxjs": "^6.5.3",
     "sec-api": "^1.0.15",
     "sqlite3": "^4.1.0",
-    "typeorm": "^0.2.20",
+    "typeorm": "^0.2.25",
     "xml2js": "^0.4.22"
   },
   "devDependencies": {
